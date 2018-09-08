@@ -1,10 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app='ShoppingListDirectiveApp'>
 <head>
     <meta charset="UTF-8">
-    <title>hello</title>
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <style>body { font-size: 1.3em;}</style>
+    <title>Template Expanding Directive</title>
 </head>
-<body>
-you have to get through
+<body >
+    <h1>
+        Template Expanding Directive
+    </h1>
+    <div id="list1"
+         ng-controller="ShoppingListController1 as list">
+        <h3>Shopping List #1</h3>
+        <input type="text" ng-model="list.itemName"
+               placeholder="item name">
+        <input type="text" ng-model="list.itemQuantity"
+               placeholder="quantity">
+        <button ng-click="list.addItem();">
+            Add Item
+        </button>
+        <ol>
+            <li ng-repeat="item in list.items">
+                <list-item-description>
+
+                </list-item-description>
+                <button ng-click="list.removeItem($index);">
+                    delete Item
+                </button>
+            </li>
+        </ol>
+        <div ng-show="list.errorMessage">
+            Error:{{list.errorMessage}}
+        </div>
+    </div>
+
+
+    <div id="list2"
+         ng-controller="ShoppingListController2 as list">
+        <h3>Shopping List #2 (limited to 3 items)</h3>
+        <input type="text" ng-model="list.itemName"
+               placeholder="item name">
+        <input type="text" ng-model="list.itemQuantity"
+               placeholder="quantity">
+        <button ng-click="list.addItem();">
+            Add Item
+        </button>
+        <ol>
+            <li ng-repeat="item in list.items">
+                <list-item-description>
+
+                </list-item-description>
+                <button ng-click="list.removeItem($index);">
+                    delete Item
+                </button>
+            </li>
+        </ol>
+        <div ng-show="list.errorMessage">
+            Error:{{list.errorMessage}}
+        </div>
+    </div>
+
+
+    </div>
 </body>
 </html>
